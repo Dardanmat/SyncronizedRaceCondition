@@ -3,22 +3,24 @@ package tpsit.racecondition;
 
 public class Test {
     
-    public static int num = 0;
-    public static int volte = 200;
-    public static int sleepTime = 100;
-    
     public static void main(String[] args) throws InterruptedException {
         
-        Thread increm = new Incremento("Incrementatore");
-        Thread decrem = new Decremento("Decrementatore");
-
+        Contatore.CONTEGGIO = 0; 
+        Contatore.VOLTE_CONTEGGIO = 1000;
+        Contatore.SLEEP_TIME = 0;
+        
+        Thread increm = new Contatore(true, "Incrementatore");
+        Thread decrem = new Contatore(false, "Decrementatore");
+        
+        System.out.println("Conteggio iniziale: " + Contatore.CONTEGGIO);
+        
         increm.start();
         decrem.start();
         
         increm.join();
         decrem.join();
         
-        System.out.println("Numero " + Test.num);
+        System.out.println("Conteggio finale: " + Contatore.CONTEGGIO);
 
     }
 }
