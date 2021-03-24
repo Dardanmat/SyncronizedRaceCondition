@@ -18,11 +18,13 @@ public class Contatore extends Thread{
     public void run() {
         for(int i = 0; i < VOLTE_CONTEGGIO; i++){
             if(incrementa)CONTEGGIO++;
-        else CONTEGGIO--;
+            else CONTEGGIO--;
+            
+            sleepSomeSeconds();
         }
     }
     
-    public void sleepLess1Second(){
+    public void sleepSomeSeconds(){
         try {
             sleep(new Random().nextInt(SLEEP_TIME));
         } catch (Exception e) {}
