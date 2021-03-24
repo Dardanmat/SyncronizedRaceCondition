@@ -6,7 +6,7 @@ public class Test {
     public static void main(String[] args) throws InterruptedException {
         
         Contatore.CONTEGGIO = 0; //conteggio iniziale
-        Contatore.VOLTE_CONTEGGIO = 1000; //volte da incrementare/decrementare
+        Contatore.VOLTE_CONTEGGIO = 10000; //volte da incrementare/decrementare
         Contatore.SLEEP_TIME = 10; //#sleepTime
         
         Thread increm = new Contatore(true, "Incrementatore");

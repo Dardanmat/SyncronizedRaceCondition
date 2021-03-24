@@ -17,16 +17,13 @@ public class Contatore extends Thread{
     @Override
     public void run() {
         for(int i = 0; i < VOLTE_CONTEGGIO; i++){
-            if(incrementa)CONTEGGIO++;
-            else CONTEGGIO--;
-            
-            sleepSomeSeconds();
+            try{
+                if(incrementa){
+                    CONTEGGIO++;
+                    sleep(new Random().nextInt(SLEEP_TIME));
+                }
+                else CONTEGGIO--;
+            }catch(Exception e){}
         }
-    }
-    
-    public void sleepSomeSeconds(){
-        try {
-            sleep(new Random().nextInt(SLEEP_TIME));
-        } catch (Exception e) {}
     }
 }
