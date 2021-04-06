@@ -5,9 +5,8 @@ public class Test {
     
     public static void main(String[] args) throws InterruptedException {
         
-        Contatore.CONTEGGIO = 0; //conteggio iniziale
-        Contatore.VOLTE_CONTEGGIO = 10000; //volte da incrementare/decrementare
-        Contatore.SLEEP_TIME = 10; //#sleepTime
+        Contatore.CONTEGGIO = 0;                //conteggio iniziale
+        Contatore.VOLTE_CONTEGGIO = 100000;      //volte da incrementare/decrementare
         
         Thread increm = new Contatore(true, "Incrementatore");
         Thread decrem = new Contatore(false, "Decrementatore");
@@ -17,8 +16,10 @@ public class Test {
         decrem.start();
         increm.start();
         
-        decrem.join();
-        increm.join();
+        try{
+            decrem.join();
+            increm.join();
+        }catch(Exception e){}
         
         System.out.println("Conteggio finale: " + Contatore.CONTEGGIO);
 

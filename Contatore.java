@@ -1,11 +1,9 @@
 package tpsit.racecondition;
-import java.util.Random;
 
 public class Contatore extends Thread{
     
     public static int CONTEGGIO = 0;
     public static int VOLTE_CONTEGGIO = 0;
-    public static int SLEEP_TIME = 0;
     
     public boolean incrementa;
 
@@ -16,14 +14,23 @@ public class Contatore extends Thread{
 
     @Override
     public void run() {
+        conta(incrementa);
+    }
+    
+    public synchronized static void conta(boolean incrementa){
+        if(incrementa) incremento();
+        else decremento();
+    }
+    
+    private static void incremento(){
         for(int i = 0; i < VOLTE_CONTEGGIO; i++){
-            try{
-                if(incrementa){
-                    CONTEGGIO++;
-                    sleep(new Random().nextInt(SLEEP_TIME));
-                }
-                else CONTEGGIO--;
-            }catch(Exception e){}
-        }
+                CONTEGGIO ++;
+            }
+    }
+    
+    private static void decremento(){
+        for(int i = 0; i < VOLTE_CONTEGGIO; i++){
+                CONTEGGIO --;
+            }
     }
 }
